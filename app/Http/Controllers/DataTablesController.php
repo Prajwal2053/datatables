@@ -15,8 +15,8 @@ class DataTablesController extends Controller
      */
     public function index()
     {
-        
-        return view('datatables.index'); 
+        $products = Product::all();
+        return view('datatables.index',compact('products')); 
     }
 
     public function show()
@@ -24,7 +24,7 @@ class DataTablesController extends Controller
         $data=Product::all();
       return datatables::of($data)
        ->addColumn('action', function ($user) {
-                return '<button id="edit'.$user->id.'" class="btn btn-xs btn-primary" value="abcdef"><i class="glyphicon glyphicon-edit"></i> Edit</button>';
+                return '<button data-id="editproduct'.$user->id.'" class="btn btn-xs btn-primary btn-edit" value="abcdef"><i class="glyphicon glyphicon-edit"></i> Edit</button>';
             })
             ->editColumn('id', '{{$id}}')
            ->make(true);
