@@ -34,6 +34,48 @@
         <!-- Bootstrap JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <!-- App scripts -->
-        @stack('scripts')
+
+        
+
+        <script>
+
+$(function() {
+    $('#users-table').DataTable({
+        processing: true,
+        serverSide: true,
+
+        ajax: '{!! route('datatables.data') !!}',
+        columns: [
+            { data:'id', name: 'id' },
+            { data:'code', name:'code' },
+            { data: 'name', name: 'name' },
+            { data: 'brand', name: 'brand' },
+            { data: 'default_price', name: 'default_price' },
+            { data: 'stock', name: 'stock' },
+            { data: 'action', name: 'action', orderable: false, searchable: false },
+            
+            
+            
+        ]
+    });
+    });
+    
+</script>
+
+<script>
+            
+$(document).load(function()
+  {
+    $("#edit1").click(function()
+    {
+         alert("abc");
+
+    });
+           
+});
+
+
+</script>
+        @yield('scripts')
     </body>
 </html>
